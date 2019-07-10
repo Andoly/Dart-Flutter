@@ -1,0 +1,22 @@
+ //Herdando construtores de uma superclasse
+  class Localizacao{
+  num lat, long;
+    Localizacao(this.lat, this.long);
+
+  }
+    class Planalto extends Localizacao{
+      num elevacao;
+      Planalto(num lat, num long, this.elevacao) : super(lat, long);
+
+      //UTILIZANDO toString para retornar a expressão completa
+      String toString(){
+        String resultado = "A elevação do planalato é ${this.elevacao} com latitude de ${this.lat} e longitude de ${this.long}";
+        return resultado;
+      }
+    }
+    main(List<String> arguments) {
+    var planalto = new Planalto(87.5, 112, 13);
+    
+    //print("A elevação do planalato é ${planalto.elevacao} com latitude de ${planalto.lat} e longitude de ${planalto.long}");
+    print(planalto.toString());
+    }
