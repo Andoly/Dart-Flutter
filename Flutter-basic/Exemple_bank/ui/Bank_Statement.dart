@@ -53,7 +53,7 @@ class _Bank_StatementState extends State<Bank_Statement> {
                 child: FlatButton(onPressed: _emprestimo ,
                   color: Colors.lightGreen,
                   textColor: Colors.white70,
-                  child: Text("Emprestimo de \$ 100",
+                  child: Text("Emprestimo de \$ 100 ",
                       style: TextStyle(
                         fontSize: 19.9,
                         color: _contadorGrana >= 3000 ? Colors.blueAccent : Colors.white,
