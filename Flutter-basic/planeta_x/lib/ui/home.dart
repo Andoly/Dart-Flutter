@@ -22,17 +22,17 @@ class _HomeState extends State<Home> {
       switch(radioValor){
         case 0:
           _resultadoFinal = pesoPlaneta(_controlePeso.text, 0.06);
-          _nomePlaneta = "O seu peso em Plutão é ${_resultadoFinal.toStringAsFixed(1)}";
+          _nomePlaneta = "Peso em Plutão é ${_resultadoFinal.toStringAsFixed(1)}";
           break;
 
         case 1:
           _resultadoFinal = pesoPlaneta(_controlePeso.text, 0.38);
-          _nomePlaneta = "O seu peso em Marte é ${_resultadoFinal.toStringAsFixed(1)}";
+          _nomePlaneta = "Peso em Marte é ${_resultadoFinal.toStringAsFixed(1)}";
           break;
 
         case 2:
           _resultadoFinal = pesoPlaneta(_controlePeso.text, 0.91);
-          _nomePlaneta = "O seu peso em Venus é ${_resultadoFinal.toStringAsFixed(1)}";
+          _nomePlaneta = "Peso em Venus é ${_resultadoFinal.toStringAsFixed(1)}";
           break;
 
         default:
@@ -46,9 +46,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Planeta X"),
-        backgroundColor: Colors.black38,
+        backgroundColor: Color(0xFF524949),
       ),
-    backgroundColor: Colors.blueGrey,
+    backgroundColor: Color(0xFFD3E2EB),
       body: Container(
         alignment: Alignment.topCenter,
         child: ListView(
@@ -81,9 +81,9 @@ class _HomeState extends State<Home> {
                               value: 0,
                               groupValue: radioValor,
                               onChanged: tomaContaValorRadio),
-                          Text("Plutao",
+                          Text("Plutão",
                           style: TextStyle(
-                            color: Colors.white30
+                            color: Color(0xFF524949),
                           )
                           ),
                           Radio<int>(
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
                             onChanged: tomaContaValorRadio,
                           ),
                           Text("Marte",
-                          style: TextStyle(color: Colors.white30),
+                          style: TextStyle(color: Color(0xFF524949),),
                           ),
                           Radio<int>(
                             activeColor: Colors.orangeAccent,
@@ -102,15 +102,15 @@ class _HomeState extends State<Home> {
                             onChanged: tomaContaValorRadio,
                           ),
                           Text("Venus",
-                          style: TextStyle(color: Colors.white30),
+                          style: TextStyle(color: Color(0xFF524949),),
                           )
                         ],
                       ),
                       Text(
-                        _controlePeso.text.isEmpty ? "Insira o seu peso " : _nomePlaneta + "Kg",
+                        _controlePeso.text.isEmpty ? "Insira o seu peso " : _nomePlaneta + " Kg",
                         //"$_nomePlaneta",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFF524949),
                         fontSize: 19.4,
                         fontWeight: FontWeight.w400,
                       ),
