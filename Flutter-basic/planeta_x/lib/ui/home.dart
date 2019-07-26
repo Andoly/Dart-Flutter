@@ -109,11 +109,11 @@ class _HomeState extends State<Home> {
                       Text(
                         _controlePeso.text.isEmpty ? "Insira o seu peso " : _nomePlaneta + " Kg",
                         //"$_nomePlaneta",
-                      style: TextStyle(
-                        color: Color(0xFF524949),
-                        fontSize: 19.4,
-                        fontWeight: FontWeight.w400,
-                      ),
+                        style: TextStyle(
+                          color: Color(0xFF524949),
+                          fontSize: 19.4,
+                          fontWeight: FontWeight.w400,
+                        ),
                       )
                     ],
                   ),
