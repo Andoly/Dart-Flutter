@@ -9,7 +9,7 @@ class _HomeState extends State<Home> {
   final TextEditingController _idadeControl = new TextEditingController();
   final TextEditingController _alturaControl = new TextEditingController();
   final TextEditingController _pesoControl = new TextEditingController();
-  double resultado;
+  double resultado = 0.0;
   String resultadoFinal  = "";
   String _resultadoConsulta = "";
 
@@ -24,23 +24,35 @@ class _HomeState extends State<Home> {
         && (_pesoControl.text.isNotEmpty || peso > 0))
       {
         resultado = peso / (altura * altura);
-        if (double.parse(resultado.toStringAsFixed(1)) >16
-        && _resultadoConsulta <= 16.9){
-          _resultadoConsulta = "Muito abaixo do peso";
-        }
-        if (double.parse(resultado.toStringAsFixed(1)) > 16.9
-        && resultado <= 18.4){
-          _resultadoConsulta = "Abaixo do peso";
-        }
-        if (double.parse(resultado.toStringAsFixed(1)) > 18.4
-        && resultado <= 24.9){
-          _resultadoConsulta = "Peso normal";
-        }
-        if (double.parse(resultado.toStringAsFixed(1))> 24.9
-        && resultado <= 29.9){
-          _resultadoConsulta = "Acima do peso";
+
+        //Leitura do diagnostico
+        if (double.parse(resultado.toStringAsFixed(1)) <= 16.9) {
+          _resultadoConsulta = "Classificação: Muito abaixo do peso";
+
+        }else if ( double.parse(resultado.toStringAsFixed(1)) > 16.9
+            && resultado <= 18.4) {
+          _resultadoConsulta = "Classificação: Abaixo do peso";
+        }else if ( double.parse(resultado.toStringAsFixed(1)) > 18.4
+            && resultado <= 24.9){
+          _resultadoConsulta = "Classificação: Peso normal";
+
+        }else if (double.parse(resultado.toStringAsFixed(1)) > 24.9
+            && resultado <= 29.9) {
+          _resultadoConsulta = "Classificação: Acima do peso";
+
+        }else if(double.parse(resultado.toStringAsFixed(1)) > 29.9
+            && resultado <= 34.9) {
+          _resultadoConsulta = "Classificação: Obsidade Grau I";
+        }else if(double.parse(resultado.toStringAsFixed(1)) > 34.9
+            && resultado <= 40.0) {
+          _resultadoConsulta = "Classificação: Obesidade grau II";
+        }else if(double.parse(resultado.toStringAsFixed(1)) > 40.0) {
+          _resultadoConsulta = "Classificação: Obesidade grau II";
+        }else {
+          resultado = 0.0;
         }
       }
+
     });
   }
   @override
@@ -49,7 +61,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Índice de massa corporal"),
         centerTitle: true,
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.pinkAccent
       ),
       body: Container(
         alignment: Alignment.topCenter,
@@ -75,8 +87,8 @@ class _HomeState extends State<Home> {
                       controller: _idadeControl,
                       decoration: InputDecoration(
                           labelText: 'Idade',
-                          hintText: '22',
-                          icon: Icon(Icons.person_outline),
+                          hintText: 'Digite sua idade',
+                          icon: Icon(Icons.person_outline)
                       ),
                     ),
                     TextField(
@@ -84,8 +96,8 @@ class _HomeState extends State<Home> {
                       controller: _alturaControl,
                       decoration: InputDecoration(
                           labelText: 'Altura(m)',
-                          hintText: '1.75',
-                          icon: Icon(Icons.insert_chart),
+                          hintText: 'Digite sua altura',
+                          icon: Icon(Icons.insert_chart)
                      ),
                     ),
                     Padding(
@@ -95,8 +107,8 @@ class _HomeState extends State<Home> {
                         controller: _pesoControl,
                         decoration: InputDecoration(
                             labelText: 'Peso(Kg)',
-                            hintText: '62',
-                            icon: Icon(Icons.line_weight),
+                            hintText: 'Digite seu peso',
+                            icon: Icon(Icons.line_weight)
                         ),
                       ),
                     ),
@@ -106,10 +118,10 @@ class _HomeState extends State<Home> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
-                          onPressed: () => null,
+                          onPressed: _calcularIMC,
                           color: Colors.pinkAccent,
                           child: Text('Calcular'),
-                          textColor: Colors.white,
+                          textColor: Colors.white
                         ),
                       ),
                    )
@@ -120,20 +132,20 @@ class _HomeState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Normal",
+                Text("IMC : ${resultado.toStringAsFixed(2)}",
                   style: TextStyle(
                     color: Colors.blueAccent,
                     fontWeight: FontWeight.w500,
                     fontStyle: FontStyle.italic,
-                    fontSize: 19.9,
+                    fontSize: 19.9
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text("*",
+                  child: Text("$_resultadoConsulta",
                       style: TextStyle(
                         color: Colors.blueAccent,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w500
                       )
                   ),
                 )
