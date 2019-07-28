@@ -43,7 +43,7 @@ void main() async  {
                       "${_dados[posicao]['email'][0]}"
                     ),
                   ),
-                  onTap: () => debugPrint("${_dados[posicao]['email']}"),
+                  onTap:() => _mostrarMensagem(context, _dados[posicao]['body']),
                 )
               ],
             );
@@ -52,6 +52,32 @@ void main() async  {
       ),
     ),
   ));
+}
+
+void _mostrarMensagem(BuildContext context, String mensagem) {
+  var alert = new AlertDialog(
+    title: Text('JSON'),
+    content: Text(mensagem),
+    actions: <Widget>[
+      Center(
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Voltar"),
+            ),
+          ),
+        ],
+      ),
+      )
+
+    ],
+  );
+  showDialog(context: context, builder: (context) => alert);
 }
 
 Future<List> getJson() async {
