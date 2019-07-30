@@ -24,8 +24,8 @@ List _features;
       Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-              title: Text('Terremotos'),
               centerTitle: true,
+              title: Text('Terremotos'),
               backgroundColor: Color(0xFF0BA0E3),
             ),
             body: Center(
