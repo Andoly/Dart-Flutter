@@ -8,8 +8,8 @@ class MudarCidade extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('Mudar cidade'),
+        backgroundColor: Colors.grey,
+        title: Text('Escolher cidade'),
         centerTitle: true,
       ),
       body: Stack(
@@ -41,8 +41,8 @@ class MudarCidade extends StatelessWidget{
                     });
                   },
                   textColor: Colors.white70,
-                  color: Colors.redAccent,
-                  child: Text('Mostrar o tempo'),
+                  color: Colors.grey,
+                  child: Text('Previsão de tempo'),
                 ),
               )
             ],
