@@ -79,7 +79,7 @@ class _Previsao_tempoState extends State<Previsao_tempo> {
                       title: Text(conteudo['main']['temp'].toString() + "ºC",
                       style: tempStyle(),),
                       subtitle: ListTile(
-                        title: Text("Humidade: ${conteudo['main']['humidity'].toString()}g/Kg\n"
+                        title: Text("Humidade: ${conteudo['main']['humidity'].toString()}%\n"
                             "Min: ${conteudo['main']['temp_min'].toString()} ºC\n"
                             "Max: ${conteudo['main']['temp_max'].toString()} ºC ",
                           style: extraTemp(),),
@@ -115,7 +115,7 @@ class _Previsao_tempoState extends State<Previsao_tempo> {
     return TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w500,
-        fontSize: 49.9,
+        fontSize: 39.9,
         fontStyle: FontStyle.normal
     );
   }

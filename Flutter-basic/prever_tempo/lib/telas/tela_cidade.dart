@@ -42,7 +42,7 @@ class MudarCidade extends StatelessWidget{
                   },
                   textColor: Colors.white70,
                   color: Colors.grey,
-                  child: Text('Previsão de tempo'),
+                  child: Text('Previsão do tempo'),
                 ),
               )
             ],
