@@ -22,6 +22,7 @@ class BDadosAuxilio {
       return _db;
     }
     _db = await initBD();
+    return _db;
   }
 
   BDadosAuxilio.internal();
@@ -36,7 +37,7 @@ class BDadosAuxilio {
   void _onCreate(Database db, int version) async{
           await db.execute("CREATE TABLE $tabelaUsuario($colunaId INTEGER PRIMARY KEY,"
           "$coluneNome TEXT,"
-          "$colunaSenha TEXT");
+          "$colunaSenha TEXT)");
   }
 
   //CRUD - CREATE, READ, UPDATE, DELETE
@@ -65,15 +66,28 @@ class BDadosAuxilio {
   Future<Usuario> extrairUsuario(int id) async {
     var bdCliente = await db;
     var res = await bdCliente.rawQuery("SELECT * FROM $tabelaUsuario"
-        "WHERE $colunaId = $id");
+        " WHERE $colunaId = $id");
     if(res.length == 0) return null;
     return new Usuario.from(res.first);
   }
+
   Future<int> apagarUsuario(int id) async {
     var bdCliente = await db;
 
     return await bdCliente.delete(tabelaUsuario,
     where: "$colunaId = ?", whereArgs: [id]);
+  }
+
+  Future<int> atualizarUsuario(Usuario usuario) async {
+    var bdCliente = await db;
+    return await bdCliente.update(tabelaUsuario,
+        usuario.toMap(), where: "$colunaId = ?", whereArgs: [usuario.id]);
+  }
+
+  //Fechar tabela ao final das operações
+  Future fechar() async {
+    var bdCliente = await db;
+    return bdCliente.close();
   }
 
 }
