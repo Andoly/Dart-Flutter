@@ -1,21 +1,11 @@
 import 'package:database/modelos/Usuario.dart';
 import 'package:database/ui/auxiliar_bd.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 
 List _todosUsuarios;
 void main() async{
   var db = new BDadosAuxilio();
-  /*
-  int usuarioSalvo = await db.inserirUsuario(new Usuario("Andoly", "senha#321"));
-  int contagem = await db.coletaContagem();
 
-  //print("Usuario: $usuarioSalvo");
-
-  Usuario Andoly = await db.extrairUsuario(1);
-
-  debugPrint("Usuario: ${Andoly.senha}");
-  */
   //await db.inserirUsuario(new Usuario("Angela", "leandrollll"));
 
   //Todos usuarios
@@ -45,9 +35,9 @@ class Home extends StatelessWidget {
                 elevation: 2.0,
                 child: ListTile(
                   leading: CircleAvatar(
-                    child: Text("${Usuario.from((_todosUsuarios[posicao]).nome.substring(0,1)}"),
+                       child: Text("${Usuario.from(_todosUsuarios[posicao]).nome.substring(0,1)}"),
                   ),
-                  title: Text("Usuario: ${Usuario.from((_todosUsuarios[posicao]).nome}"),
+                    title: Text("Usuario: ${Usuario.from(_todosUsuarios[posicao]).nome}"),
                   subtitle: Text("Id: ${Usuario.from(_todosUsuarios[posicao]).id}"),
 
                   onTap: () => debugPrint("Senha: ${Usuario.from(_todosUsuarios[posicao]).senha}"),
