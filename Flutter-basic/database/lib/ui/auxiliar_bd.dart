@@ -32,6 +32,7 @@ class BDadosAuxilio {
       String caminho = join(documentoDiretorio.path, "bd_principal.db"); //import 'package:path/path.dart';
 
     var bDados = await openDatabase(caminho, version: 1, onCreate: _onCreate);
+    return bDados;
   }
 
   void _onCreate(Database db, int version) async{
@@ -75,7 +76,7 @@ class BDadosAuxilio {
     var bdCliente = await db;
 
     return await bdCliente.delete(tabelaUsuario,
-    where: "$colunaId = ?", whereArgs: [id]);
+      where: "$colunaId = ?", whereArgs: [id]);
   }
 
   Future<int> atualizarUsuario(Usuario usuario) async {
