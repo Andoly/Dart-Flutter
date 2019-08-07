@@ -6,10 +6,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import '../modelos/task.dart';
 
-class BbAjudante {
-  static final BbAjudante _instance = new BbAjudante.internal();
+class DbAjudante {
+  static final DbAjudante _instance = new DbAjudante.internal();
 
-  factory BbAjudante() => _instance;
+  factory DbAjudante() => _instance;
 
   final String nomeTabela = "taskTabela";
   final String colunaId = "id";
@@ -26,7 +26,7 @@ class BbAjudante {
     return _db;
   }
 
-  BbAjudante.internal();
+  DbAjudante.internal();
 
   initBd() async {
     Directory documentoDiretorio = await getApplicationDocumentsDirectory();
@@ -65,7 +65,7 @@ class BbAjudante {
         await bdCliente.rawQuery("SELECT COUNT(*) FROM $nomeTabela"));
   }
 
-  Future<Task> recuperarTaskS(int id) async {
+  Future<Task> recuperarAllTask(int id) async {
     var bdCliente = await db;
     var res = await bdCliente.rawQuery("SELECT * FROM $nomeTabela"
         " WHERE id = $colunaId ");
